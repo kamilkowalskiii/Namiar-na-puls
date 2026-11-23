@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/brand/logo-namiar-na-puls.png" alt="Logo Namiar na Puls" width="160" />
+<img src="docs/brand/Zielona_mapa_z_ikona_serca.png" alt="Logo Namiar na Puls" width="160" />
 
 # Namiar na Puls (Projekt Misja-AED)
 
