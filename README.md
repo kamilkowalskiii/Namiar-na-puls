@@ -8,6 +8,8 @@
 
 *Urzędowo weryfikowany system agregacji, standaryzacji, deduplikacji geoprzestrzennej i publikacji danych o defibrylatorach AED dla ekosystemu `gov.pl` oraz `dane.gov.pl`.*
 
+Link do uruchomienia strony: https://namiarnapuls.vercel.app/#start
+
 [![Standard danych](https://img.shields.io/badge/Standard-dane.gov.pl%202020%20(44%20kolumny)-009A3B?style=flat-square)](#6-model-danych-44-kolumny-i-schemat-sqlite)
 [![Format przestrzenny](https://img.shields.io/badge/GeoJSON-RFC%207946%20%7C%20WGS84-002B49?style=flat-square)](#5-silnik-przetwarzania-danych-i-moduły-aplikacji)
 [![Baza danych](https://img.shields.io/badge/Baza-SQLite%20WASM%20(sql.js)-0E5B2B?style=flat-square)](#6-model-danych-44-kolumny-i-schemat-sqlite)
