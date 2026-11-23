@@ -1,0 +1,14 @@
+~$*
+__pycache__/
+*.pyc
+Thumbs.db
+desktop.ini
+
+# baza zgłoszeń (symulacja gov.pl) – tworzona przez serwer.py
+wyniki.gov
+baza/*.gov
+*.gov-journal
+*.gov-wal
+*.gov-shm
+*-wal
+*-shm

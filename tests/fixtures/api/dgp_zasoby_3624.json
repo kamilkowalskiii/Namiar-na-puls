@@ -1,0 +1,80 @@
+{
+ "data": [
+  {
+   "attributes": {
+    "title": "Defibrylatory zlokalizowane w Mieście Krosno",
+    "format": "csv",
+    "file_url": "https://api.dane.gov.pl/media/resources/20240219/Defibrylator_jAmxQcp.csv",
+    "download_url": "https://api.dane.gov.pl/resources/54632,defibrylatory-zlokalizowane-w-miescie-krosno/file",
+    "link": "https://api.dane.gov.pl/media/resources/20240219/Defibrylator_jAmxQcp.csv",
+    "modified": "2024-02-19T17:32:25Z",
+    "data_date": "2024-02-19",
+    "csv_download_url": null
+   },
+   "id": "54632",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/resources/54632,defibrylatory-zlokalizowane-w-miescie-krosno"
+   },
+   "type": "resource",
+   "relationships": {
+    "tabular_data": {
+     "data": {
+      "id": "54632",
+      "type": "tabular_data"
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/resources/54632/data"
+     }
+    },
+    "institution": {
+     "data": {
+      "id": "229",
+      "type": "institution"
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/institutions/229,urzad-miasta-krosna"
+     }
+    },
+    "dataset": {
+     "data": {
+      "id": "3624",
+      "type": "dataset"
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/datasets/3624,defibrylatory-zlokalizowane-w-miescie-krosno"
+     }
+    }
+   }
+  }
+ ],
+ "links": {
+  "self": "https://api.dane.gov.pl/1.4/datasets/3624/resources?per_page=50&include=institution&page=1"
+ },
+ "jsonapi": {
+  "version": "1.4"
+ },
+ "included": [
+  {
+   "attributes": {
+    "title": "Urząd Miasta Krosna"
+   },
+   "id": "229",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/institutions/229,urzad-miasta-krosna"
+   },
+   "type": "institution"
+  }
+ ],
+ "meta": {
+  "language": "pl",
+  "params": {
+   "per_page": "50",
+   "include": "institution"
+  },
+  "aggregations": {},
+  "relative_uri": "/1.4/datasets/3624/resources?per_page=50&include=institution",
+  "server_time": "2026-11-21T12:47:31Z",
+  "count": 1,
+  "path": "/1.4/datasets/3624/resources"
+ }
+}

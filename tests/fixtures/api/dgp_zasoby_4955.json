@@ -1,0 +1,117 @@
+{
+ "jsonapi": {
+  "version": "1.4"
+ },
+ "links": {
+  "self": "https://api.dane.gov.pl/1.4/datasets/4955/resources?per_page=50&include=institution&page=1"
+ },
+ "data": [
+  {
+   "relationships": {
+    "institution": {
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/institutions/537,urzad-miasta-marki"
+     },
+     "data": {
+      "type": "institution",
+      "id": "537"
+     }
+    },
+    "dataset": {
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/datasets/4955,defibrylatory-zlokalizowane-na-terenie-miasta-markI"
+     },
+     "data": {
+      "type": "dataset",
+      "id": "4955"
+     }
+    }
+   },
+   "attributes": {
+    "title": "Defibrylatory zlokalizowane na terenie Miasta Marki",
+    "format": "csv",
+    "file_url": "https://api.dane.gov.pl/media/resources/20250710/Defibrylator_GminaMiastoMarki_1.csv",
+    "download_url": "https://api.dane.gov.pl/resources/68353,defibrylatory-zlokalizowane-na-terenie-miasta-marki/file",
+    "link": "https://api.dane.gov.pl/media/resources/20250710/Defibrylator_GminaMiastoMarki_1.csv",
+    "modified": "2025-07-10T12:13:16Z",
+    "data_date": "2025-07-10",
+    "csv_download_url": null
+   },
+   "type": "resource",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/resources/68353,defibrylatory-zlokalizowane-na-terenie-miasta-marki"
+   },
+   "id": "68353"
+  },
+  {
+   "relationships": {
+    "tabular_data": {
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/resources/68355/data"
+     },
+     "data": {
+      "type": "tabular_data",
+      "id": "68355"
+     }
+    },
+    "institution": {
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/institutions/537,urzad-miasta-marki"
+     },
+     "data": {
+      "type": "institution",
+      "id": "537"
+     }
+    },
+    "dataset": {
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/datasets/4955,defibrylatory-zlokalizowane-na-terenie-miasta-markI"
+     },
+     "data": {
+      "type": "dataset",
+      "id": "4955"
+     }
+    }
+   },
+   "attributes": {
+    "title": "Defibrylatory zlokalizowane na terenie Miasta Marki",
+    "format": "xlsx",
+    "file_url": "https://api.dane.gov.pl/media/resources/20250710/Defibrylator_GminaMiastoMarki_1.xlsx",
+    "download_url": "https://api.dane.gov.pl/resources/68355,defibrylatory-zlokalizowane-na-terenie-miasta-marki/file",
+    "link": "https://api.dane.gov.pl/media/resources/20250710/Defibrylator_GminaMiastoMarki_1.xlsx",
+    "modified": "2025-07-10T12:17:32Z",
+    "data_date": "2025-07-10",
+    "csv_download_url": "https://api.dane.gov.pl/resources/68355,defibrylatory-zlokalizowane-na-terenie-miasta-marki/csv"
+   },
+   "type": "resource",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/resources/68355,defibrylatory-zlokalizowane-na-terenie-miasta-marki"
+   },
+   "id": "68355"
+  }
+ ],
+ "meta": {
+  "aggregations": {},
+  "count": 2,
+  "server_time": "2026-11-21T12:47:32Z",
+  "path": "/1.4/datasets/4955/resources",
+  "language": "pl",
+  "relative_uri": "/1.4/datasets/4955/resources?per_page=50&include=institution",
+  "params": {
+   "per_page": "50",
+   "include": "institution"
+  }
+ },
+ "included": [
+  {
+   "attributes": {
+    "title": "Urząd Miasta Marki"
+   },
+   "type": "institution",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/institutions/537,urzad-miasta-marki"
+   },
+   "id": "537"
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+# Wdrożenie statyczne na GitHub Pages (bez builda): kopia katalogu głównego bez testów, generatora i plików CI.
+# Wymaga jednorazowo: Settings -> Pages -> Build and deployment -> Source: „GitHub Actions”.
+name: GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  testy:
+    # ten sam zestaw co w testy.yml (reusable workflow) – bez dublowania kroków
+    uses: ./.github/workflows/testy.yml
+
+  budowanie:
+    needs: testy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Pliki strony (bez tests/, generatora wzorca i .github/)
+        run: |
+          mkdir -p _site
+          rsync -a ./ _site/ \
+            --exclude '.git' --exclude '.github' --exclude '.gitignore' --exclude '_site' \
+            --exclude 'tests' --exclude 'wzorzec/generuj_wzorzec.py' \
+            --exclude '__pycache__' --exclude '*.pyc'
+          touch _site/.nojekyll
+          test -f _site/index.html
+          ls -R _site | head -n 60
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+          include-hidden-files: true   # .nojekyll (bez niego GitHub Pages przepuszcza stronę przez Jekylla)
+
+  # Osobne zadanie: paczka „github-pages” z zakończonego zadania „budowanie” jest już widoczna dla deploy-pages
+  # (w jednym zadaniu deploy-pages potrafił jej nie znaleźć – „No artifacts named github-pages”).
+  publikacja:
+    needs: budowanie
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.wdrozenie.outputs.page_url }}
+    steps:
+      - id: wdrozenie
+        uses: actions/deploy-pages@v5

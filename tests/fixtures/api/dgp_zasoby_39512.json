@@ -1,0 +1,71 @@
+{
+ "data": [
+  {
+   "attributes": {
+    "title": "Lokalizacja defibryzatorów (AED)",
+    "format": "json",
+    "file_url": "https://dane.um.warszawa.pl/pl/catalogue/7bc32ffc-c2ac-4d32-83c9-b6f7a0b38de8",
+    "download_url": "https://api.dane.gov.pl/resources/2512040,lokalizacja-defibryzatorow-aed/file",
+    "link": "https://dane.um.warszawa.pl/pl/catalogue/7bc32ffc-c2ac-4d32-83c9-b6f7a0b38de8",
+    "modified": "2025-10-10T05:58:53Z",
+    "data_date": "2025-10-10",
+    "csv_download_url": null
+   },
+   "id": "2512040",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/resources/2512040,lokalizacja-defibryzatorow-aed"
+   },
+   "type": "resource",
+   "relationships": {
+    "institution": {
+     "data": {
+      "id": "7621",
+      "type": "institution"
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/institutions/7621,urzad-m-st-warszawy"
+     }
+    },
+    "dataset": {
+     "data": {
+      "id": "39512",
+      "type": "dataset"
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/datasets/39512,lokalizacja-defibryzatorow-aed"
+     }
+    }
+   }
+  }
+ ],
+ "links": {
+  "self": "https://api.dane.gov.pl/1.4/datasets/39512/resources?per_page=50&include=institution&page=1"
+ },
+ "jsonapi": {
+  "version": "1.4"
+ },
+ "included": [
+  {
+   "attributes": {
+    "title": "Urząd m.st. Warszawy"
+   },
+   "id": "7621",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/institutions/7621,urzad-m-st-warszawy"
+   },
+   "type": "institution"
+  }
+ ],
+ "meta": {
+  "language": "pl",
+  "params": {
+   "per_page": "50",
+   "include": "institution"
+  },
+  "aggregations": {},
+  "relative_uri": "/1.4/datasets/39512/resources?per_page=50&include=institution",
+  "server_time": "2026-11-21T12:47:30Z",
+  "count": 1,
+  "path": "/1.4/datasets/39512/resources"
+ }
+}

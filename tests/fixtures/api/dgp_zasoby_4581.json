@@ -1,0 +1,219 @@
+{
+ "data": [
+  {
+   "attributes": {
+    "title": "Lokalizacje AED – Automatycznych Defibrylatorów Zewnętrznych w Przemyślu",
+    "format": "xml",
+    "file_url": "https://api.dane.gov.pl/media/resources/20241106/1730818801_b50R6UVxPgoVdBbq.gml",
+    "download_url": "https://api.dane.gov.pl/resources/62092,lokalizacje-aed-automatycznych-defibrylatorow-zewnetrznych-w-przemyslu/file",
+    "link": "https://przemysl.skycms.com.pl/open-data/20/1730818801_b50R6UVxPgoVdBbq/gml",
+    "modified": "2024-11-06T06:42:29Z",
+    "data_date": "2024-11-06",
+    "csv_download_url": null
+   },
+   "id": "62092",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/resources/62092,lokalizacje-aed-automatycznych-defibrylatorow-zewnetrznych-w-przemyslu"
+   },
+   "type": "resource",
+   "relationships": {
+    "institution": {
+     "data": {
+      "id": "145",
+      "type": "institution"
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/institutions/145,urzad-miejski-w-przemyslu"
+     }
+    },
+    "dataset": {
+     "data": {
+      "id": "4581",
+      "type": "dataset"
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/datasets/4581,lokalizacje-aed-automatycznych-defibrylatorow-zewn"
+     }
+    }
+   }
+  },
+  {
+   "attributes": {
+    "title": "Lokalizacje AED – Automatycznych Defibrylatorów Zewnętrznych w Przemyślu",
+    "format": "geojson",
+    "file_url": "https://api.dane.gov.pl/media/resources/20241106/1730818801_b50R6UVxPgoVdBbq.geojson",
+    "download_url": "https://api.dane.gov.pl/resources/62093,lokalizacje-aed-automatycznych-defibrylatorow-zewnetrznych-w-przemyslu/file",
+    "link": "https://przemysl.skycms.com.pl/open-data/20/1730818801_b50R6UVxPgoVdBbq/geojson",
+    "modified": "2024-11-06T06:45:11Z",
+    "data_date": "2024-11-06",
+    "csv_download_url": null
+   },
+   "id": "62093",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/resources/62093,lokalizacje-aed-automatycznych-defibrylatorow-zewnetrznych-w-przemyslu"
+   },
+   "type": "resource",
+   "relationships": {
+    "institution": {
+     "data": {
+      "id": "145",
+      "type": "institution"
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/institutions/145,urzad-miejski-w-przemyslu"
+     }
+    },
+    "dataset": {
+     "data": {
+      "id": "4581",
+      "type": "dataset"
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/datasets/4581,lokalizacje-aed-automatycznych-defibrylatorow-zewn"
+     }
+    }
+   }
+  },
+  {
+   "attributes": {
+    "title": "Lokalizacje AED – Automatycznych Defibrylatorów Zewnętrznych w Przemyślu",
+    "format": "json",
+    "file_url": "https://api.dane.gov.pl/media/resources/20241106/1730818801_b50R6UVxPgoVdBbq.json",
+    "download_url": "https://api.dane.gov.pl/resources/62094,lokalizacje-aed-automatycznych-defibrylatorow-zewnetrznych-w-przemyslu/file",
+    "link": "https://przemysl.skycms.com.pl/open-data/20/1730818801_b50R6UVxPgoVdBbq/json",
+    "modified": "2024-11-06T06:47:30Z",
+    "data_date": "2024-11-06",
+    "csv_download_url": null
+   },
+   "id": "62094",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/resources/62094,lokalizacje-aed-automatycznych-defibrylatorow-zewnetrznych-w-przemyslu"
+   },
+   "type": "resource",
+   "relationships": {
+    "institution": {
+     "data": {
+      "id": "145",
+      "type": "institution"
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/institutions/145,urzad-miejski-w-przemyslu"
+     }
+    },
+    "dataset": {
+     "data": {
+      "id": "4581",
+      "type": "dataset"
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/datasets/4581,lokalizacje-aed-automatycznych-defibrylatorow-zewn"
+     }
+    }
+   }
+  },
+  {
+   "attributes": {
+    "title": "Lokalizacje AED – Automatycznych Defibrylatorów Zewnętrznych w Przemyślu",
+    "format": "csv",
+    "file_url": "https://api.dane.gov.pl/media/resources/20241106/1730818801_b50R6UVxPgoVdBbq.csv",
+    "download_url": "https://api.dane.gov.pl/resources/62095,lokalizacje-aed-automatycznych-defibrylatorow-zewnetrznych-w-przemyslu/file",
+    "link": "https://przemysl.skycms.com.pl/open-data/20/1730818801_b50R6UVxPgoVdBbq/csv",
+    "modified": "2024-11-06T06:50:29Z",
+    "data_date": "2024-11-06",
+    "csv_download_url": null
+   },
+   "id": "62095",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/resources/62095,lokalizacje-aed-automatycznych-defibrylatorow-zewnetrznych-w-przemyslu"
+   },
+   "type": "resource",
+   "relationships": {
+    "institution": {
+     "data": {
+      "id": "145",
+      "type": "institution"
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/institutions/145,urzad-miejski-w-przemyslu"
+     }
+    },
+    "dataset": {
+     "data": {
+      "id": "4581",
+      "type": "dataset"
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/datasets/4581,lokalizacje-aed-automatycznych-defibrylatorow-zewn"
+     }
+    }
+   }
+  },
+  {
+   "attributes": {
+    "title": "Lokalizacje AED – Automatycznych Defibrylatorów Zewnętrznych w Przemyślu",
+    "format": "xml",
+    "file_url": "https://api.dane.gov.pl/media/resources/20241120/1730818801_b50R6UVxPgoVdBbq.gml",
+    "download_url": "https://api.dane.gov.pl/resources/62424,lokalizacje-aed-automatycznych-defibrylatorow-zewnetrznych-w-przemyslu/file",
+    "link": "https://przemysl.skycms.com.pl/open-data/20/1730818801_b50R6UVxPgoVdBbq/gml",
+    "modified": "2024-11-20T09:40:20Z",
+    "data_date": "2024-11-20",
+    "csv_download_url": null
+   },
+   "id": "62424",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/resources/62424,lokalizacje-aed-automatycznych-defibrylatorow-zewnetrznych-w-przemyslu"
+   },
+   "type": "resource",
+   "relationships": {
+    "institution": {
+     "data": {
+      "id": "145",
+      "type": "institution"
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/institutions/145,urzad-miejski-w-przemyslu"
+     }
+    },
+    "dataset": {
+     "data": {
+      "id": "4581",
+      "type": "dataset"
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/datasets/4581,lokalizacje-aed-automatycznych-defibrylatorow-zewn"
+     }
+    }
+   }
+  }
+ ],
+ "links": {
+  "self": "https://api.dane.gov.pl/1.4/datasets/4581/resources?per_page=50&include=institution&page=1"
+ },
+ "jsonapi": {
+  "version": "1.4"
+ },
+ "included": [
+  {
+   "attributes": {
+    "title": "Urząd Miejski w Przemyślu"
+   },
+   "id": "145",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/institutions/145,urzad-miejski-w-przemyslu"
+   },
+   "type": "institution"
+  }
+ ],
+ "meta": {
+  "language": "pl",
+  "params": {
+   "per_page": "50",
+   "include": "institution"
+  },
+  "aggregations": {},
+  "relative_uri": "/1.4/datasets/4581/resources?per_page=50&include=institution",
+  "server_time": "2026-11-21T12:47:30Z",
+  "count": 5,
+  "path": "/1.4/datasets/4581/resources"
+ }
+}

@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Namiar na Puls</title>
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <meta name="description" content="Namiar na puls – prototyp narzędzia do łączenia danych o defibrylatorach AED z wielu źródeł w jeden zbiór zgodny ze wzorcem dla dane.gov.pl, z prostym formularzem dla dysponentów. Nie jest serwisem administracji publicznej.">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#tresc">Przejdź do treści</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="#start">
+        <img class="brand__icon" src="img/logo.png" alt="" width="60" height="64">
+        <span class="brand__text">Namiar na puls</span>
+      </a>
+      <p class="brand__portal">Dane o defibrylatorach AED</p>
+      <nav aria-label="Menu główne">
+        <ul class="top-nav">
+          <li><a href="#start">Start</a></li>
+          <li><a href="#zrodla">Scal dane</a></li>
+          <li><a href="#formularz">Formularz dysponenta</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Pasek kroków (widoczny tylko na ekranach ścieżki koordynatora) -->
+  <div class="stepper-wrap" id="stepper" hidden>
+    <div class="container">
+      <nav aria-label="Etapy scalania danych">
+        <ol class="stepper">
+          <li><a href="#zrodla" data-step="zrodla"><span class="stepper__num" aria-hidden="true">1</span> Źródła danych</a></li>
+          <li><a href="#mapowanie" data-step="mapowanie"><span class="stepper__num" aria-hidden="true">2</span> Mapowanie kolumn</a></li>
+          <li><a href="#walidacja" data-step="walidacja"><span class="stepper__num" aria-hidden="true">3</span> Walidacja i duplikaty</a></li>
+          <li><a href="#wynik" data-step="wynik"><span class="stepper__num" aria-hidden="true">4</span> Wynik i eksport</a></li>
+        </ol>
+      </nav>
+      <p class="stepper-compact" id="stepper-compact"></p>
+    </div>
+  </div>
+
+  <main id="tresc" class="container" tabindex="-1">
+
+    <!-- ===================== START ===================== -->
+    <section data-route="start" aria-labelledby="h-start">
+      <h1 id="h-start" tabindex="-1">Wspólny zbiór danych o defibrylatorach AED</h1>
+      <p class="lead">Przy nagłym zatrzymaniu krążenia liczy się każda minuta. To narzędzie łączy rozproszone dane o AED
+        (pliki gmin, instytucji i firm, zbiory już opublikowane w sieci oraz wpisy z formularza dysponenta) w jeden zbiór zgodny ze wzorcem, gotowy do publikacji w portalu
+        <span lang="en">dane.gov.pl</span>.</p>
+      <div class="cards cards--2">
+        <article class="card card--path">
+          <h2>Scal dane z wielu źródeł</h2>
+          <p>Dla koordynatora (np. urzędu wojewódzkiego lub ministerstwa). Pobierz zbiory już opublikowane w dane.gov.pl,
+            dodaj pliki dysponentów, usuń duplikaty i oznacz źródło każdego rekordu.</p>
+          <ol class="mini-steps">
+            <li>Wybierz źródła</li>
+            <li>Dopasuj kolumny do wzorca</li>
+            <li>Sprawdź błędy i duplikaty</li>
+            <li>Pobierz zbiór (CSV, JSON, XLSX)</li>
+          </ol>
+          <a class="btn btn--primary" href="#zrodla">Rozpocznij scalanie</a>
+        </article>
+
+        <article class="card card--path">
+          <h2>Udostępnij dane o swoich AED</h2>
+          <p>Dla dysponenta (szkoły, urzędu, firmy, OSP). Wypełnij formularz na stronie albo pobierz prosty arkusz.</p>
+          <div class="pobierz-szablon">
+            <a class="btn btn--primary" href="wzorzec/formularz_dysponenta_AED.xlsx" download aria-describedby="start-xlsx-opis">Pobierz prosty formularz (Excel)</a>
+            <p class="hint" id="start-xlsx-opis">Jeden wiersz = jedno urządzenie. Wypełnij, zapisz i odeślij koordynatorowi albo opublikuj w <span lang="en">dane.gov.pl</span>.</p>
+            <p class="pobierz-szablon__inne"><a href="wzorzec/formularz_dysponenta_AED.csv" download>Ten sam formularz w CSV</a></p>
+            <details class="pobierz-szablon__zaawansowane">
+              <summary>Dla zaawansowanych: pełny wzorcowy zakres danych</summary>
+              <ul class="link-list">
+                <li><a href="wzorzec/wzorcowy_zakres_danych_AED.xlsx" download>Wzorcowy zakres danych (XLSX)</a> <span class="meta">– opis wszystkich pól, słowniki, przykłady</span></li>
+                <li><a href="wzorzec/szablon_aed.csv" download>Pełny szablon CSV</a> <span class="meta">– wszystkie kolumny wzorca</span></li>
+              </ul>
+            </details>
+          </div>
+          <a class="btn btn--secondary" href="#formularz">Wypełnij formularz na stronie</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== KROK 1: ŹRÓDŁA ===================== -->
+    <section data-route="zrodla" data-step-index="1" aria-labelledby="h-zrodla" hidden>
+      <h1 id="h-zrodla" tabindex="-1">Krok 1 z 4: Wybierz źródła danych</h1>
+      <p class="lead">Dodaj co najmniej jedno źródło. Każde trafi do rejestru źródeł, w którym wskażesz jego licencję
+        i priorytet przy rozstrzyganiu konfliktów.</p>
+
+      <div class="cards cards--sources">
+        <article class="card source-card" aria-labelledby="h-src-plik">
+          <h2 id="h-src-plik" class="card__title">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" fill="currentColor"/></svg>
+            Plik od dysponenta
+          </h2>
+          <p>CSV, XLSX, XLS, ODS, JSON lub GeoJSON. Rozpoznajemy kodowanie, separator i wiersz nagłówka.</p>
+          <div class="dropzone" id="dropzone">
+            <input class="visually-hidden" type="file" id="plik-input" multiple
+                   accept=".csv,.tsv,.txt,.xlsx,.xls,.ods,.json,.geojson"
+                   aria-describedby="plik-pomoc">
+            <label for="plik-input" class="btn btn--primary">Wybierz pliki</label>
+            <p id="plik-pomoc" class="dropzone__hint">lub upuść je tutaj</p>
+          </div>
+        </article>
+
+        <article class="card source-card" aria-labelledby="h-src-form">
+          <h2 id="h-src-form" class="card__title">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 17.2V21h3.8L17.8 10l-3.8-3.8L3 17.2zM20.7 7a1 1 0 0 0 0-1.4l-2.3-2.3a1 1 0 0 0-1.4 0l-1.8 1.8 3.8 3.8L20.7 7z" fill="currentColor"/></svg>
+            Formularz
+          </h2>
+          <p>Dysponent bez własnego pliku może wpisać urządzenia na stronie („Dodaj do scalania”) albo wypełnić prosty arkusz.</p>
+          <div class="pobierz-szablon">
+            <a class="btn btn--secondary btn--small" href="wzorzec/formularz_dysponenta_AED.xlsx" download aria-describedby="k1-xlsx-opis">Pobierz prosty formularz (Excel)</a>
+            <p class="hint" id="k1-xlsx-opis">Wyślij go dysponentom. Wypełniony plik wgraj tutaj jako „Plik od dysponenta”.
+              <a href="wzorzec/formularz_dysponenta_AED.csv" download>Wersja CSV</a>.</p>
+            <details class="pobierz-szablon__zaawansowane">
+              <summary>Pełny wzorcowy zakres danych</summary>
+              <ul class="link-list">
+                <li><a href="wzorzec/wzorcowy_zakres_danych_AED.xlsx" download>Wzorcowy zakres danych (XLSX)</a></li>
+                <li><a href="wzorzec/szablon_aed.csv" download>Pełny szablon CSV</a></li>
+              </ul>
+            </details>
+          </div>
+          <a class="btn btn--secondary" href="#formularz">Otwórz formularz dysponenta</a>
+        </article>
+
+        <article class="card source-card source-card--wide" aria-labelledby="h-src-dgp" id="karta-dgp">
+          <h2 id="h-src-dgp" class="card__title">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h16v4H4zm0 6h16v4H4zm0 6h16v4H4z" fill="currentColor"/></svg>
+            Zbiory z dane.gov.pl
+          </h2>
+          <p>Zbiory o AED już opublikowane w portalu (m.in. Krosno, Przemyśl, Marki, Warszawa), pobierane przez API portalu.
+            Wyszukaj zbiór i dodaj wybrane zasoby (pliki) jako źródła.</p>
+          <form class="remote-form dgp-search" id="dgp-form" role="search" aria-label="Szukaj zbiorów w dane.gov.pl" novalidate>
+            <div class="field">
+              <label for="dgp-fraza">Szukana fraza</label>
+              <div class="input-row">
+                <input type="search" id="dgp-fraza" value="AED defibrylator" autocomplete="off">
+                <button type="submit" class="btn btn--primary" id="dgp-szukaj">Szukaj</button>
+                <button type="button" class="btn btn--ghost" id="dgp-anuluj" hidden>Anuluj</button>
+              </div>
+            </div>
+            <p class="remote-status" id="dgp-stan" hidden></p>
+          </form>
+          <div id="dgp-komunikat"></div>
+          <div id="dgp-wyniki"></div>
+        </article>
+      </div>
+
+      <h2 id="h-rejestr">Rejestr źródeł</h2>
+      <div id="rejestr"></div>
+      <div id="podglad"></div>
+
+      <div class="step-actions">
+        <a class="btn btn--ghost" href="#start">Wstecz</a>
+        <button type="button" class="btn btn--primary" id="dalej-mapowanie">Następny krok<span class="visually-hidden">: mapowanie kolumn</span></button>
+      </div>
+    </section>
+
+    <!-- ===================== KROK 2: MAPOWANIE ===================== -->
+    <section data-route="mapowanie" data-step-index="2" aria-labelledby="h-mapowanie" hidden>
+      <h1 id="h-mapowanie" tabindex="-1">Krok 2 z 4: Dopasuj kolumny do wzorca</h1>
+      <p class="lead">Dla każdego źródła wskaż, skąd brać wartość każdego pola wzorca. Podpowiedzi przygotowaliśmy
+        automatycznie – sprawdź zwłaszcza te z niską pewnością. Pola obowiązkowe muszą mieć źródło wartości.</p>
+      <p class="alert alert--err" id="map-brak-modulu" hidden>Nie wczytano modułu mapowania (js/core/mapowanie.js).
+        Sprawdź, czy katalog js/ jest obok index.html.</p>
+      <p class="empty" id="map-pusto" hidden>Nie dodano jeszcze żadnego źródła. <a href="#zrodla">Wróć do kroku 1</a>.</p>
+      <h2 id="h-map-zrodla" class="visually-hidden">Źródła do dopasowania</h2>
+      <div id="map-zrodla"></div>
+      <div id="map-panel"></div>
+      <div id="map-podglad"></div>
+      <div id="map-uwagi"></div>
+      <p class="remote-status" id="map-stan" role="status" hidden></p>
+      <div class="step-actions">
+        <a class="btn btn--ghost" href="#zrodla">Wstecz</a>
+        <button type="button" class="btn btn--primary" id="dalej-walidacja">Następny krok<span class="visually-hidden">: walidacja i duplikaty</span></button>
+      </div>
+    </section>
+
+    <!-- ===================== KROK 3: WALIDACJA ===================== -->
+    <section data-route="walidacja" data-step-index="3" aria-labelledby="h-walidacja" hidden>
+      <h1 id="h-walidacja" tabindex="-1">Krok 3 z 4: Sprawdź błędy i duplikaty</h1>
+      <p class="lead">Sprawdziliśmy każdy rekord ze wzorcem. Błędy trzeba poprawić, aby rekord był zgodny ze wzorcem;
+        ostrzeżenia warto przejrzeć. Wartości możesz poprawić bezpośrednio na liście.</p>
+      <div class="alert alert--warn" id="wal-nieaktualne" hidden>
+        <p>Od ostatniego sprawdzenia zmieniły się źródła lub mapowanie kolumn. Wynik poniżej może być nieaktualny.
+          Przelicz rekordy – ręczne poprawki zostaną zachowane.</p>
+        <div class="alert-actions"><button type="button" class="btn btn--secondary btn--small" id="wal-przelicz">Przelicz rekordy</button></div>
+      </div>
+      <div id="wal-brak" class="placeholder" hidden></div>
+      <div id="wal-tresc" hidden>
+        <h2 id="h-wal-podsumowanie">Podsumowanie</h2>
+        <div id="wal-podsumowanie"></div>
+        <div id="wal-zbiorcze"></div>
+        <div id="wal-filtry"></div>
+        <div id="wal-lista"></div>
+        <h2 id="h-wal-naprawy">Automatyczne naprawy</h2>
+        <div id="wal-naprawy"></div>
+        <h2 id="h-wal-poprawki" tabindex="-1">Ręczne poprawki</h2>
+        <p class="meta">Wartości zmienione ręcznie w tym kroku. Każdą możesz przywrócić do wartości ze źródła. Poprawki zostają po ponownym przeliczeniu.</p>
+        <div id="wal-poprawki"><p class="empty">Nie poprawiono jeszcze żadnej wartości.</p></div>
+        <h2 id="h-wal-duplikaty" tabindex="-1">Duplikaty</h2>
+        <p>To samo urządzenie bywa opisane w kilku źródłach (np. w pliku gminy i w zbiorze z dane.gov.pl). Wyszukamy rekordy
+          leżące blisko siebie i zaproponujemy, które scalić. Ty decydujesz, czy to jedno urządzenie.</p>
+        <div id="wal-duplikaty"></div>
+        <h2 id="h-wal-odstajace" tabindex="-1">Punkty odstające</h2>
+        <p>Punkty bardzo daleko od reszty zbioru lub od swojej miejscowości. Często to zamienione albo źle wpisane współrzędne.</p>
+        <div id="wal-odstajace"></div>
+      </div>
+      <p class="alert alert--warn" id="wal-ostrzezenie-dalej" hidden></p>
+      <div class="step-actions">
+        <a class="btn btn--ghost" href="#mapowanie">Wstecz</a>
+        <a class="btn btn--primary" href="#wynik" id="dalej-wynik">Następny krok<span class="visually-hidden">: wynik i eksport</span></a>
+      </div>
+    </section>
+
+    <!-- ===================== KROK 4 ===================== -->
+    <section data-route="wynik" data-step-index="4" aria-labelledby="h-wynik" hidden>
+      <h1 id="h-wynik" tabindex="-1">Krok 4 z 4: Pobierz zbiór i opublikuj</h1>
+      <p class="lead">Sprawdź podsumowanie, uzupełnij opis zbioru (metadane) i pobierz pliki. Na końcu znajdziesz
+        instrukcję publikacji w portalu <span lang="en">dane.gov.pl</span>.</p>
+      <div id="wyn-brak" class="placeholder" hidden></div>
+      <div id="wyn-tresc" hidden>
+        <h2 id="h-wyn-podsumowanie" tabindex="-1">Podsumowanie zbioru</h2>
+        <div id="wyn-podsumowanie"></div>
+        <h2 id="h-wyn-mapa">Mapa punktów</h2>
+        <div id="wyn-mapa"></div>
+        <h2 id="h-wyn-licencja">Licencja zbioru</h2>
+        <div id="wyn-licencja"></div>
+        <h2 id="h-wyn-metadane" tabindex="-1">Opis zbioru (metadane)</h2>
+        <p>Te informacje wpiszesz w portalu przy dodawaniu zbioru albo pobierzesz jako plik XML dla harvestera.
+          Pola oznaczone gwiazdką (*) są obowiązkowe.</p>
+        <div id="wyn-metadane"></div>
+        <section class="gov-wysylka" id="gov-wysylka" aria-label="Wyślij do zatwierdzenia przez bazę gov.pl">
+          <div id="gov-tresc"></div>
+        </section>
+        <h2 id="h-wyn-pliki" tabindex="-1">Pobierz pliki</h2>
+        <div id="wyn-pliki"></div>
+        <h2 id="h-wyn-podglad">Podgląd pliku CSV</h2>
+        <div id="wyn-podglad"></div>
+      </div>
+
+
+      <div class="instrukcja">
+        <h2 id="h-wyn-dokumenty">Przydatne dokumenty</h2>
+        <ul class="link-list">
+          <li><a href="https://www.gov.pl/web/cyfryzacja/standardy-otwartosci-danych" target="_blank" rel="noopener noreferrer">Standardy otwartości danych (gov.pl)<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a>
+            – opis Standardu technicznego, prawnego, API i bezpieczeństwa.</li>
+          <li><a href="https://dane.gov.pl/media/ckeditor/2020/06/16/standard-techniczny.pdf" target="_blank" rel="noopener noreferrer">Standard techniczny (PDF, wersja z 2020 r.)<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a>
+            – sprawdź w Bazie wiedzy portalu, czy nie ma nowszej wersji.</li>
+          <li><a href="https://dane.gov.pl/pl/knowledgebase" target="_blank" rel="noopener noreferrer">Baza wiedzy dane.gov.pl<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a>
+            – instrukcje dla dostawców danych, szkolenia, pytania i odpowiedzi.</li>
+        </ul>
+      </div>
+      <div class="step-actions">
+        <a class="btn btn--ghost" href="#walidacja">Wstecz</a>
+      </div>
+    </section>
+
+    <!-- ===================== FORMULARZ ===================== -->
+    <section data-route="formularz" aria-labelledby="h-formularz" hidden>
+      <h1 id="h-formularz" tabindex="-1">Formularz dysponenta AED</h1>
+      <p class="lead">Trzy kroki: wpisz instytucję, dodaj defibrylatory, pobierz plik (albo dodaj go do scalania).</p>
+      <div class="pobierz-szablon pobierz-szablon--wiersz">
+        <p>Wolisz arkusz? <a href="wzorzec/formularz_dysponenta_AED.xlsx" download>Pobierz prosty formularz (Excel)</a> –
+          wypełnij go i odeślij koordynatorowi albo opublikuj w <span lang="en">dane.gov.pl</span>.
+          <a href="wzorzec/formularz_dysponenta_AED.csv" download>Wersja CSV</a>.</p>
+        <details class="pobierz-szablon__zaawansowane">
+          <summary>Dla zaawansowanych: pełny wzorcowy zakres danych</summary>
+          <ul class="link-list">
+            <li><a href="wzorzec/wzorcowy_zakres_danych_AED.xlsx" download>Wzorcowy zakres danych (XLSX)</a></li>
+            <li><a href="wzorzec/szablon_aed.csv" download>Pełny szablon CSV</a></li>
+          </ul>
+        </details>
+      </div>
+      <div id="fd-tresc"></div>
+    </section>
+
+    <section data-route="404" aria-labelledby="h-404" hidden>
+      <h1 id="h-404" tabindex="-1">Nie ma takiej strony</h1>
+      <p><a href="#start">Wróć na start</a></p>
+    </section>
+  </main>
+
+  <div class="visually-hidden" aria-live="polite" aria-atomic="true" id="live-polite"></div>
+  <div class="visually-hidden" aria-live="assertive" aria-atomic="true" id="live-assertive"></div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <h2 class="visually-hidden">Stopka</h2>
+      <div class="site-footer__kolumny">
+        <div class="site-footer__marka">
+          <a class="site-footer__logo" href="#start"><img src="img/logo.png" alt="" width="42" height="45"><span>Namiar na Puls</span></a>
+          <p>Wspólny zbiór danych o defibrylatorach AED – łączymy dane z wielu źródeł w jeden zbiór zgodny ze wzorcem dla dane.gov.pl.</p>
+        </div>
+        <nav class="site-footer__kolumna" aria-labelledby="h-stopka-info">
+          <h3 id="h-stopka-info">Informacje</h3>
+          <ul>
+            <li><a href="https://www.gov.pl/web/gov/polityka-dotyczaca-cookies" target="_blank" rel="noopener noreferrer">Polityka cookies<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></li>
+            <li><a href="https://www.gov.pl/web/gov/prawa-autorskie" target="_blank" rel="noopener noreferrer">Prawa autorskie<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></li>
+            <li><a href="https://www.gov.pl/web/gov/warunki-korzystania" target="_blank" rel="noopener noreferrer">Warunki korzystania<span class="visually-hidden"> (otwiera się w nowej karcie)</span></a></li>
+            <li><button type="button" id="manage-consent" class="privacy-settings-button" aria-haspopup="dialog" aria-controls="ustawienia-prywatnosci">Ustawienia prywatności</button></li>
+          </ul>
+        </nav>
+        <div class="site-footer__kolumna">
+          <h3>O projekcie</h3>
+          <ul>
+            <li>Autorzy: <strong>wsizENJOYERS</strong></li>
+            <li>HackNation 2026 – zadanie „Misja AED – Dane na ratunek”</li>
+            <li><a href="LICENSES.md">Licencje użytych bibliotek i fontu</a></li>
+            <li>Krój pisma Open Sans (SIL OFL 1.1)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <dialog id="ustawienia-prywatnosci" class="dialog-prywatnosc" aria-labelledby="h-prywatnosc">
+    <form method="dialog">
+      <h2 id="h-prywatnosc">Ustawienia prywatności</h2>
+      <p>Ta aplikacja nie używa plików cookies śledzących, reklamowych ani analitycznych i niczego nie wysyła do zewnętrznych usług statystycznych.</p>
+      <ul class="prywatnosc-lista">
+        <li><label><input type="checkbox" checked disabled> <strong>Niezbędne</strong> – szkic formularza dysponenta zapisywany tylko w tej przeglądarce (pamięć lokalna). Zawsze włączone.</label></li>
+        <li><label><input type="checkbox" disabled> <strong>Analityczne</strong> – nie używamy.</label></li>
+        <li><label><input type="checkbox" disabled> <strong>Marketingowe</strong> – nie używamy.</label></li>
+      </ul>
+      <p>Szkic możesz w każdej chwili usunąć przyciskiem „Wyczyść formularz i usuń szkic” w formularzu dysponenta.</p>
+      <div class="dialog-prywatnosc__akcje"><button class="btn btn--primary" value="zamknij">Zamknij</button></div>
+    </form>
+  </dialog>
+
+  <!-- Biblioteki (kopie lokalne, licencje w vendor/*/LICENSE) -->
+  <script src="vendor/papaparse/papaparse.min.js"></script>
+  <script src="vendor/sheetjs/xlsx.full.min.js"></script>
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <!-- Aplikacja: zwykłe skrypty (działają także po otwarciu pliku z dysku) -->
+  <script src="js/core/ns.js"></script>
+  <script src="js/schema/schema.js"></script>
+  <script src="js/core/store.js"></script>
+  <script src="js/core/normalizacja.js"></script>
+  <script src="js/core/mapowanie.js"></script>
+  <script src="js/core/walidacja.js"></script>
+  <script src="js/ui/dom.js"></script>
+  <script src="js/core/router.js"></script>
+  <script src="js/sources/file.js"></script>
+  <script src="js/sources/dgp.js"></script>
+  <script src="js/sources/geokoder.js"></script>
+  <script src="js/ui/sources.js"></script>
+  <script src="js/ui/zdalne.js"></script>
+  <script src="js/ui/mapowanie.js"></script>
+  <script src="js/ui/walidacja.js"></script>
+  <script src="js/core/duplikaty.js"></script>
+  <script src="js/core/eksport.js"></script>
+  <script src="js/core/formularz.js"></script>
+  <script src="js/core/gov.js"></script>
+  <script src="js/ui/duplikaty.js"></script>
+  <script src="js/ui/wynik.js"></script>
+  <script src="js/ui/mapa.js"></script>
+  <script src="js/ui/formularz.js"></script>
+  <script src="js/ui/gov.js"></script>
+  <script src="js/ui/prywatnosc.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

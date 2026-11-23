@@ -1,0 +1,43 @@
+# Testy automatyczne: node tests/uruchom.js (wszystkie tests/*.test.js, w tym walidacja XML metadanych przez lxml),
+# testy e2e w headless Chrome (ubuntu-latest ma google-chrome i python3) oraz sprawdzenie, czy pliki generowane z wzorca są aktualne.
+name: Testy
+
+on:
+  push:
+    branches-ignore: [main]   # na main testy uruchamia pages.yml (workflow_call) – bez podwójnego przebiegu
+  pull_request:
+  workflow_dispatch:
+  workflow_call:        # wywoływany z pages.yml przed publikacją (jeden zestaw testów)
+
+permissions:
+  contents: read
+
+jobs:
+  testy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Biblioteki Pythona (walidacja XML, generator wzorca)
+        run: python -m pip install --disable-pip-version-check lxml openpyxl
+
+      - name: Testy (node tests/uruchom.js)
+        run: node tests/uruchom.js
+
+      - name: Testy end-to-end (headless Chrome, bez internetu)
+        run: node tests/e2e/uruchom.js
+
+      - name: Wzorzec i js/schema/schema.js są aktualne względem generatora
+        run: |
+          python wzorzec/generuj_wzorzec.py
+          # XLSX zawiera datę utworzenia, więc porównujemy tylko pliki tekstowe; CSV mają CRLF (RFC 4180), repozytorium – LF
+          git diff --exit-code --ignore-cr-at-eol -- js/schema/schema.js wzorzec/schema.json wzorzec/szablon_aed.csv wzorzec/przyklad_aed.csv wzorzec/formularz_dysponenta_AED.csv

@@ -1,0 +1,358 @@
+{
+ "jsonapi": {
+  "version": "1.4"
+ },
+ "links": {
+  "last": "https://api.dane.gov.pl/1.4/datasets?per_page=8&q=AED%20defibrylator&sort=relevance&page=9",
+  "self": "https://api.dane.gov.pl/1.4/datasets?per_page=8&q=AED%20defibrylator&sort=relevance&page=1",
+  "next": "https://api.dane.gov.pl/1.4/datasets?per_page=8&q=AED%20defibrylator&sort=relevance&page=2"
+ },
+ "data": [
+  {
+   "relationships": {
+    "resources": {
+     "meta": {
+      "count": 5
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/datasets/4581,lokalizacje-aed-automatycznych-defibrylatorow-zewn/resources"
+     }
+    },
+    "institution": {
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/institutions/145,urzad-miejski-w-przemyslu"
+     },
+     "data": {
+      "type": "institution",
+      "id": "145"
+     }
+    }
+   },
+   "attributes": {
+    "title": "Lokalizacje <mark>AED</mark> – Automatycznych <mark>Defibrylatorów</mark> Zewnętrznych w Przemyślu</mark>",
+    "slug": "lokalizacje-aed-automatycznych-defibrylatorow-zewn",
+    "modified": "2024-11-06T06:42:45Z",
+    "license_name": "CC0 1.0",
+    "notes": ") dostępnych w przestrzeni publicznej miasta Przemyśla. <mark>Defibrylatory</mark> <mark>AED</mark> to urządzenia medyczne</mark>…<p>Zbiór danych zawiera informacje o lokalizacjach automatycznych <mar",
+    "keywords": [
+     "zdrowie",
+     "bezpieczeństwo",
+     "AED",
+     "zdrowie publiczne",
+     "Defibrylator"
+    ],
+    "formats": [
+     "csv",
+     "geojson",
+     "json",
+     "xml"
+    ]
+   },
+   "type": "dataset",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/datasets/4581,lokalizacje-aed-automatycznych-defibrylatorow-zewn"
+   },
+   "id": "4581"
+  },
+  {
+   "relationships": {
+    "resources": {
+     "meta": {
+      "count": 1
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/datasets/39512,lokalizacja-defibryzatorow-aed/resources"
+     }
+    },
+    "institution": {
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/institutions/7621,urzad-m-st-warszawy"
+     },
+     "data": {
+      "type": "institution",
+      "id": "7621"
+     }
+    }
+   },
+   "attributes": {
+    "title": "Lokalizacja <mark>defibrylatorów</mark> (<mark>AED</mark>)</mark>",
+    "slug": "lokalizacja-defibryzatorow-aed",
+    "modified": "2026-06-01T08:00:08Z",
+    "license_name": "CC BY 4.0",
+    "notes": "Aktywne urządzenia <mark>AED</mark> na terenie Warszawy.</mark>",
+    "keywords": [
+     "aed",
+     "defibrylator"
+    ],
+    "formats": [
+     "json"
+    ]
+   },
+   "type": "dataset",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/datasets/39512,lokalizacja-defibryzatorow-aed"
+   },
+   "id": "39512"
+  },
+  {
+   "relationships": {
+    "resources": {
+     "meta": {
+      "count": 1
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/datasets/3624,defibrylatory-zlokalizowane-w-miescie-krosno/resources"
+     }
+    },
+    "institution": {
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/institutions/229,urzad-miasta-krosna"
+     },
+     "data": {
+      "type": "institution",
+      "id": "229"
+     }
+    }
+   },
+   "attributes": {
+    "title": "<mark>Defibrylatory</mark> zlokalizowane w Mieście Krosno</mark>",
+    "slug": "defibrylatory-zlokalizowane-w-miescie-krosno",
+    "modified": "2024-03-19T19:17:59Z",
+    "license_name": "CC0 1.0",
+    "notes": "<p><mark>Defibrylatory</mark> zlokalizowane w Mieście Krosno</p>",
+    "keywords": [
+     "Defibrylator"
+    ],
+    "formats": [
+     "csv",
+     "jsonld"
+    ]
+   },
+   "type": "dataset",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/datasets/3624,defibrylatory-zlokalizowane-w-miescie-krosno"
+   },
+   "id": "3624"
+  },
+  {
+   "relationships": {
+    "resources": {
+     "meta": {
+      "count": 2
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/datasets/4955,defibrylatory-zlokalizowane-na-terenie-miasta-markI/resources"
+     }
+    },
+    "institution": {
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/institutions/537,urzad-miasta-marki"
+     },
+     "data": {
+      "type": "institution",
+      "id": "537"
+     }
+    }
+   },
+   "attributes": {
+    "title": "<mark>Defibrylatory</mark> zlokalizowane na terenie Miasta Marki</mark>",
+    "slug": "defibrylatory-zlokalizowane-na-terenie-miasta-markI",
+    "modified": "2025-07-10T12:13:16Z",
+    "license_name": "CC BY 4.0",
+    "notes": "<span><span><p><span style=\"background-color:white;\"><span style=\"color:#5e5e5e;\"><mark>Defibrylatory</mark> i ich lokalizacja w Mieście Marki</span></span></p>",
+    "keywords": [
+     "zdrowie",
+     "pierwsza pomoc przedmedyczna",
+     "ochrona zdrowia"
+    ],
+    "formats": [
+     "csv",
+     "jsonld",
+     "xlsx"
+    ]
+   },
+   "type": "dataset",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/datasets/4955,defibrylatory-zlokalizowane-na-terenie-miasta-markI"
+   },
+   "id": "4955"
+  },
+  {
+   "relationships": {
+    "resources": {
+     "meta": {
+      "count": 5
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/datasets/4632,pozwolenia-aeo-upowazniony-przedsiebiorca/resources"
+     }
+    },
+    "institution": {
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/institutions/13,ministerstwo-finansow"
+     },
+     "data": {
+      "type": "institution",
+      "id": "13"
+     }
+    }
+   },
+   "attributes": {
+    "title": "Pozwolenia <mark>AEO</mark> (upoważniony przedsiębiorca)</mark>",
+    "slug": "pozwolenia-aeo-upowazniony-przedsiebiorca",
+    "modified": "2026-07-08T06:56:12Z",
+    "license_name": "CC0 1.0",
+    "notes": "<p> jest statusem <mark>AEO</mark>. Skrót „<mark>AEO</mark>” pochodzi od angielskiej nazwy \"Authorised Economic Operator\".</p>\n\n<p>Status</p>… <mark>AEO</mark> przyznaje się na wniosek przedsiębiorcy ",
+    "keywords": [
+     "status AEO",
+     "pozwolenia AEO",
+     "Authorised Economic Operator",
+     "upoważniony przedsiębiorca",
+     "AEO"
+    ],
+    "formats": [
+     "csv",
+     "jsonld",
+     "xlsx"
+    ]
+   },
+   "type": "dataset",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/datasets/4632,pozwolenia-aeo-upowazniony-przedsiebiorca"
+   },
+   "id": "4632"
+  },
+  {
+   "relationships": {
+    "resources": {
+     "meta": {
+      "count": 22
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/datasets/23782,ceny-ofertowe-dewelopera-handelsman-and-royce-2026/resources"
+     }
+    },
+    "institution": {
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/institutions/4515,handelsmanroyce-sp-z-oo"
+     },
+     "data": {
+      "type": "institution",
+      "id": "4515"
+     }
+    }
+   },
+   "attributes": {
+    "title": "Ceny ofertowe dewelopera Handelsman <mark>and</mark> Royce 2026</mark>",
+    "slug": "ceny-ofertowe-dewelopera-handelsman-and-royce-2026",
+    "modified": "2026-01-15T20:36:11Z",
+    "license_name": "CC0 1.0",
+    "notes": "<p>Ceny ofertowe dewelopera Handelsman <mark>and</mark> Royce Styczen 15 2026</p>",
+    "keywords": [
+     "Ceny ofertowe lokali"
+    ],
+    "formats": [
+     "csv"
+    ]
+   },
+   "type": "dataset",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/datasets/23782,ceny-ofertowe-dewelopera-handelsman-and-royce-2026"
+   },
+   "id": "23782"
+  },
+  {
+   "relationships": {
+    "resources": {
+     "meta": {
+      "count": 1
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/datasets/4491,udzial-oswietlenia-miejskiego-z-technologia-led-i-inteligentnymi-systemami-sterujacymi-w-oswiet/resources"
+     }
+    },
+    "institution": {
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/institutions/436,umlublin"
+     },
+     "data": {
+      "type": "institution",
+      "id": "436"
+     }
+    }
+   },
+   "attributes": {
+    "title": "B.4.5 - Udział oświetlenia miejskiego z technologią <mark>LED</mark> i inteligentnymi systemami sterującymi w oświetleniu</mark>",
+    "slug": "udzial-oswietlenia-miejskiego-z-technologia-led-i-inteligentnymi-systemami-sterujacymi-w-oswiet",
+    "modified": "2026-09-30T09:40:17Z",
+    "license_name": "CC BY 4.0",
+    "notes": "Udział oświetlenia miejskiego z technologią <mark>LED</mark> i inteligentnymi systemami sterującymi w oświetleniu</mark>",
+    "keywords": [],
+    "formats": [
+     "csv"
+    ]
+   },
+   "type": "dataset",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/datasets/4491,udzial-oswietlenia-miejskiego-z-technologia-led-i-inteligentnymi-systemami-sterujacymi-w-oswiet"
+   },
+   "id": "4491"
+  },
+  {
+   "relationships": {
+    "resources": {
+     "meta": {
+      "count": 1
+     },
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/datasets/30798,ceny-ofertowe-mieszkan-dewelopera-red-rubin-krubin-sp-z-oo-w-2026-r/resources"
+     }
+    },
+    "institution": {
+     "links": {
+      "related": "https://api.dane.gov.pl/1.4/institutions/3621,red-rubin-krubin-spolka-z-ograniczona-odpowiedzialnoscia"
+     },
+     "data": {
+      "type": "institution",
+      "id": "3621"
+     }
+    }
+   },
+   "attributes": {
+    "title": "Ceny ofertowe mieszkań dewelopera <mark>RED</mark> RUBIN KRUBIN Sp. z o.o. w 2026 r.</mark>",
+    "slug": "ceny-ofertowe-mieszkan-dewelopera-red-rubin-krubin-sp-z-oo-w-2026-r",
+    "modified": "2026-11-19T23:00:00Z",
+    "license_name": "CC0 1.0",
+    "notes": "Zbiór danych zawiera informacje o cenach ofertowych mieszkań dewelopera <mark>RED</mark> RUBIN KRUBIN Sp. z o.o..</mark>",
+    "keywords": [
+     "nieruchomości",
+     "mieszkania",
+     "rynek pierwotny",
+     "ceny ofertowe",
+     "RED RUBIN KRUBIN Sp. z o.o."
+    ],
+    "formats": [
+     "csv"
+    ]
+   },
+   "type": "dataset",
+   "links": {
+    "self": "https://api.dane.gov.pl/1.4/datasets/30798,ceny-ofertowe-mieszkan-dewelopera-red-rubin-krubin-sp-z-oo-w-2026-r"
+   },
+   "id": "30798"
+  }
+ ],
+ "meta": {
+  "aggregations": {},
+  "count": 72,
+  "server_time": "2026-11-21T12:47:29Z",
+  "path": "/1.4/datasets",
+  "language": "pl",
+  "relative_uri": "/1.4/datasets?q=AED%20defibrylator&per_page=8&sort=relevance",
+  "params": {
+   "q": "AED defibrylator",
+   "per_page": "8",
+   "sort": "relevance"
+  }
+ }
+}
