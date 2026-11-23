@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/brand/Zielona_mapa_z_ikona_serca.png" alt="Logo Namiar na Puls" width="160" />
+<img src="logo_NamiarNaPuls.png" alt="Logo Namiar na Puls" width="160" />
 
 # Namiar na Puls (Projekt Misja-AED)
 
@@ -18,12 +18,6 @@ Link do uruchomienia strony: https://namiarnapuls.vercel.app/#start
 
 <br />
 
-[Prezentacja UI](#3-prezentacja-interfejsu-i-zrzuty-ekranu) •
-[Architektura](#4-architektura-systemu-i-stos-technologiczny) •
-[Pipeline Danych](#5-silnik-przetwarzania-danych-i-moduły-aplikacji) •
-[Model 44 Kolumn](#6-model-danych-44-kolumny-i-schemat-sqlite) •
-[Uruchomienie i Testy](#7-struktura-repozytorium-uruchomienie-i-testy) •
-[Księga Znaku](#9-identyfikacja-wizualna-govpl-i-księga-znaku)
 
 </div>
 
